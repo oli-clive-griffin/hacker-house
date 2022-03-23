@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { getProjects } from '../../service/project-service'
 import ProjectTile from '../../components/project-tile';
 import Layout from '../universal/layout'
-import { Fragment } from 'react';
 
 function Home() {
   const { isLoading, isError, error, data } = useQuery(KeyEnum.PROJECTS, getProjects)
