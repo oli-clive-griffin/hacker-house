@@ -1,21 +1,20 @@
 import { FC } from 'react'
-import { Project } from '../service/project-service'
 
+export type ProjectTileProps = {
+  title: string,
+  description: string,
+  participants?: { firstName: string }[]
+}
 
-const ProjectTile: FC<Project> = ({ title, description, tags, participants }) => {
-
-  const harshShadow: React.CSSProperties = {
-    boxShadow: '10px 10px 0px 1px rgba(0,0,0,1)',
-    WebkitBoxShadow: '10px 10px 0px 1px rgba(0,0,0,1)',
-  }
+const ProjectTile: FC<ProjectTileProps> = ({ title, description, participants }) => {
 
   return (
-    <div style={harshShadow} className='border-2 border-slate-800 p-8 bg-white harsh-shadow'>
-      <p className='text-3xl font-semibold'>
+    <div className="shadow-lg rounded-lg p-8 bg-white">
+      <p className="text-3xl font-semibold">
         {title}
       </p>
       <div className='h-2' />
-      <div className='flex flex-row items-center'>
+      {/* <div className='flex flex-row items-center'>
         {tags?.map(({ label }) => (
           <>
             <div className='py-0.5 px-2 rounded-sm bg-blue-200' >
@@ -24,7 +23,7 @@ const ProjectTile: FC<Project> = ({ title, description, tags, participants }) =>
             <div className="w-1" />
           </>
         ))}
-      </div>
+      </div> */}
       <div className='h-4' />
       <p>
         {description}
@@ -35,8 +34,14 @@ const ProjectTile: FC<Project> = ({ title, description, tags, participants }) =>
             <p className='text-white text-sm'>{firstName[0]}</p>
           </div>
         ))}
-        <div className='w-4' />
-        <a href='./' className='font-semibold hover:underline underline-offset-2'>+ Join</a>
+        {participants && <div className='w-4' />}
+        <a href='./' className='font-semibold hover:underline underline-offset-2'>
+          <button className="rounded-md py-1 px-2
+                            bg-blue-200 hover:bg-blue-300
+                            // text-blue-500 hover:text-blue-600">
+            <p className=''>+ Join</p>
+          </button>
+        </a>
       </div>
     </div>
   )

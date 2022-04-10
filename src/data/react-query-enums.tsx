@@ -1,3 +1,4 @@
 export enum KeyEnum {
-  PROJECTS = 'PROJECTS'
+  PROJECTS = 'PROJECTS',
+  USER = 'USER',
 }
